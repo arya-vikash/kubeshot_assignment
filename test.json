@@ -1,0 +1,20 @@
+[
+    {
+        "customer_name": "Alice",
+        "order_date": "2023-01-15",
+        "product_name": "Widget A",
+        "quantity": 10
+    },
+    {
+        "customer_name": "Bob",
+        "order_date": "2023-01-16",
+        "product_name": "Widget B",
+        "quantity": 5
+    },
+    {
+        "customer_name": "Charlie",
+        "order_date": "2023-01-17",
+        "product_name": "Widget A",
+        "quantity": 8
+    }
+]
