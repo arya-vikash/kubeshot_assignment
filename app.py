@@ -1,10 +1,19 @@
 import sys
+######Install pyspark using pip#########
+print(f"\n{'-'*5}installing additional python modules{'-'*5}\n")
+import subprocess
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+install("Spark==1.0")
+########Install ends#####################
+
 from awsglue.utils import getResolvedOptions
 from awsglue.context import GlueContext
 from awsglue.job import Job
 import pandas as pd
 import boto3
 from io import StringIO
+
 
 # Initialize Glue context
 glueContext = GlueContext(SparkContext.getOrCreate())
