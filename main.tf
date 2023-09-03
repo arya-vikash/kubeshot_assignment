@@ -167,6 +167,22 @@ resource "aws_glue_job" "data_processing_glue_job" {
   }
 }
 
+resource "aws_quicksight_data_source" "default" {
+  data_source_id = "example-id"
+  name           = "My Cool Data in S3"
+
+  parameters {
+    s3 {
+      manifest_file_location {
+        bucket = aws_s3_bucket.json_bucket.id
+        key    = "test.json"
+      }
+    }
+  }
+
+  type = "S3"
+}
+
 resource "aws_quicksight_data_set" "dataset" {
   name      = "your-quick-sight-dataset-name"
   aws_account_id = var.aws_account_id
@@ -177,7 +193,7 @@ resource "aws_quicksight_data_set" "dataset" {
     physical_table_map_id = "DataSet"
     
     s3_source {
-      data_source_arn = aws_s3_bucket.json_bucket.arn
+      data_source_arn = aws_quicksight_data_source.default.arn
     input_columns {
     name    = "customer_name"
     type    = "STRING"
